@@ -5,16 +5,17 @@ app.controller('MainCtrl', [
     function ($scope) {
         $scope.pagetitle = "Welcome to Flapper News!";
         $scope.posts = [
-            { title: 'post 1', upvotes: 5 },
-            { title: 'post 2', upvotes: 3 },
-            { title: 'post 3', upvotes: 16 },
-            { title: 'post 4', upvotes: 9 },
-            { title: 'post 5', upvotes: 4 }
+            { title: 'Google', link: 'http://google.com', upvotes: 5 },
+            { title: 'Twitter', link: 'http://twitter.com', upvotes: 3 },
+            { title: 'Facebook', link: 'http://facebook.com', upvotes: 16 },
+            { title: 'Amazon', link: 'http://amazon.com', upvotes: 9 },
+            { title: 'Youtube', link: 'http://youtube.com', upvotes: 4 }
         ];
         $scope.addPost = function () {
             if (!$scope.title || $scope.title === "") { return; }
-            $scope.posts.push({ title: $scope.title, upvotes: 0 });
+            $scope.posts.push({ title: $scope.title, link: $scope.link, upvotes: 0 });
             $scope.title = '';
+            $scope.link = '';
         };
         $scope.incrementUpvotes = function (post) {
             post.upvotes += 1;

@@ -11,12 +11,20 @@
         {{pagetitle}}
     </div>
     <div ng-repeat="post in posts | orderBy: '-upvotes'">
-        {{post.title}} (&#128077;{{post.upvotes}})
+        <a ng-show="post.link" href="{{post.link}}">
+            {{post.title}}
+        </a>
+        <span ng-hide="post.link">
+            {{post.title}}
+        </span> ({{post.upvotes}}
         <span ng-click="incrementUpvotes(post)">up</span> |
-        <span ng-click="decrementUpvotes(post)">down</span>
+        <span ng-click="decrementUpvotes(post)">down</span>)
     </div>
     <form ng-submit="addPost()">
-        <input type="text" ng-model="title">
+        <input type="text" placeholder="Title" ng-model="title">
+        <br>
+        <input type="text" placeholder="Link" ng-model="link">
+        <br>
         <button type="submit">Post</button>
     </form>
 </body>
